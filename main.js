@@ -91,6 +91,12 @@ searchButton.addEventListener("click", () => {
     search();
 });
 
+document.getElementById("input_value").addEventListener("keyup", function (e) {
+    if (e.code === "Enter") {
+        document.getElementById("search-button").click();
+    }
+});
+
 // 자바스크립트 저장
 // 전체 데이터베이스가 필요함 . 그 전테 데이터베이스 훓기 , 있으면 남기기 없으면 가리기
 //
