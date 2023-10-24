@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+        place-content: center center;
+        background-color: #000;
+        color: #fff;
+        height: 100vh;
+        font-size: 40px;
+      }
+      div {
+        color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Hi</div>
+    <input type="text" />
+
+    <script>
+      // const div = document.querySelector("div");
+      // div.addEventListener("click", () => {
+      //   //이벤트 트리거(addEventListener의 첫 번째 자리)가 실행되면
+      //   // 여기있는 코드 실행해주세염
+      // });
+
+      const input = document.querySelector("input");
+
+      input.addEventListener("change", function () {
+        if (input) console.log(this.value);
+      });
+      console.log(input);
+    </script>
+  </body>
+</html>
