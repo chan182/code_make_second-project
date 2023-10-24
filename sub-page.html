@@ -1,23 +1,70 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>영화제목</title>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/detail.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <section class="wrapper">
-      <header class="detail-header">
-        <h1>헤더 작성</h1>
-      </header>
-      <main class="detail-main">디테일 여기다 작성</main>
+        <header class="detail-header">
+            <h1>헤더 작성</h1>
+        </header>
+        <main class="detail-main">디테일 여기다 작성</main>
 
-      <footer class="detail-footer">
-        <section class="review-add">리뷰 작성 ~~~</section>
+        <footer class="detail-footer">
+            <section class="review-add">리뷰 작성 ~~~</section>
+            <div>
+                <div class="input-area">
+                    <div>
+                        <input type="text" placeholder="닉네임" id="input-name">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="한줄평" id="input-content">
+                    </div>
+                    <div>
+                        <input type="number" placeholder="확인 비밀번호" id="input-password">
+                    </div>
+                </div>
+                <div class="button-thing">
+                    <button id="button-click">업로드</button>
+                    <button>수정</button>
+                    <button>삭제</button>
+                </div>
+                <br>
+                <br><br><br><br><br><br>
+            </div>
 
-        <section class="review-list">리뷰 리스트 ~~~</section>
-      </footer>
+            <section class="review-list">
+                <div class="cards">
+                    <div id="result-nickname">
+                        닉네임 : 김희찬
+                    </div>
+                    <div>
+                        한줄평 : 너무 재미있어요
+                    </div>
+                    <div>
+                        확인 비밀번호 : 1234
+                    </div>
+                    <div class="input-control">
+
+                        <button>수정</button>
+                        <button>삭제</button>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
     </section>
-  </body>
+    </footer>
+    </section>
+    <script src="sub.js"></script>
+</body>
+
 </html>
