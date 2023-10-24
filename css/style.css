@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&family=Orbit&family=Playpen+Sans&family=Roboto+Mono&display=swap");
 
-
 h1,
 h2,
 h3 {
@@ -15,12 +14,17 @@ h3 {
 
 :root {
   --card-bg-color: #f5f6fa;
+  --focus-hover-color: #252c41;
+  --header-border-radius: 0.5rem;
+
+  --main-border-radius: 1rem;
 }
 
 /*contents*/
-html{
+html {
   font-size: 62.5%;
 }
+
 body {
   padding-bottom: 50px;
 }
@@ -38,102 +42,85 @@ body {
   padding-bottom: 30px;
 }
 
-.header div {
-  padding: 1em;
+.search_bar {
+  margin-top: 20px;
+  display: flex;
 }
 
-#input_value {
+.search_bar > input {
   font-family: "Noto Sans KR", sans-serif;
-  background-color: #f4f5f9;
-  width: 200px;
-  height: 40px;
-  font-size: 30px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 2px solid lightgray;
-  padding: 10px;
+  background-color: var(--card-bg-color);
+  padding: 0.5rem 1rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0);
+  font-size: 1.6rem;
+  border-radius: var(--header-border-radius);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease-in;
 
   &:focus {
     outline: none;
+    border: 0.1rem solid var(--focus-hover-color);
   }
-}
-
-button {
-  margin: 20px 40px 20px 20px;
 }
 
 .button-81 {
   background-color: #fff;
   border: 0 solid #e2e8f0;
-  border-radius: 1.5rem;
+  border-radius: var(--header-border-radius);
   box-sizing: border-box;
   color: #252c41;
   cursor: pointer;
   display: inline-block;
-  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
-  "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1.1rem;
+  font-family:
+    "Basier circle",
+    -apple-system,
+    system-ui,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
   padding: 1rem 1.6rem;
   text-align: center;
   text-decoration: none #252c41 solid;
   text-decoration-thickness: auto;
-  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  transition: all 0.3s ease-in;
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
 .button-81:hover {
-  background-color: #252c41;
+  background-color: var(--focus-hover-color);
   color: #fff;
 }
-
-@media (min-width: 768px) {
-  .button-81 {
-    font-size: 1.125rem;
-    padding: 1rem 2rem;
-  }
-}
-
 
 .main-cards {
   justify-content: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
-  grid-template-rows: repeat(auto-fit, 700px);
+  grid-template-columns: repeat(auto-fill, 250px);
   row-gap: 30px;
   column-gap: 10px;
 }
 
-/*@media screen and (max-width: 1600px) {
-    .main-cards {
-        margin: 100px;
-        display: grid;
-        place-items: center;
-        grid-template-columns: repeat(3, 400px);
-        grid-template-rows: repeat(7, 800px);
-        gap: 50px;
-    }
-    .card {
-        position: relative;
-        height: 700px;
-        margin-top: 100px;
-    }
-}*/
-
 .card {
   width: inherit;
+  max-height: 55rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: var(--main-border-radius);
   background-color: var(--card-bg-color);
+  padding: 1rem 0;
 }
 
 .card > div:first-child {
@@ -141,11 +128,10 @@ button {
 }
 
 .card img {
-  max-height: 410px;
+  max-height: 35rem;
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--main-border-radius);
 }
-
 
 .hover11:hover {
   opacity: 1;
@@ -172,19 +158,21 @@ button {
 }
 
 #card_name {
+  width: 100%;
   font-family: "Noto Sans KR", sans-serif;
   color: #252c41;
   font-size: 26px;
-  padding: 0px;
-  margin: 10px;
+  padding: 0 1rem;
+  margin: 1rem;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
 #card_content {
   padding: 20px;
-  height: 100px;
+  height: auto;
   overflow-y: auto;
-  font-size: 20px;
+  font-size: 1.6rem;
   font-family: "Noto Sans KR", sans-serif;
   color: #252c41;
 }
@@ -199,10 +187,32 @@ button {
   right: 30px;
   bottom: 30px;
   position: fixed;
-
   cursor: pointer;
 }
+.updirection button {
+  width: 5rem;
+  height: 5rem;
+  background-color: white;
+  border: 0;
+  color: white;
+  transition: background-color 0.3s ease-in;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.updirection button svg {
+  width: 90%;
+  height: 90%;
+  fill: var(--focus-hover-color);
+  transition: fill 0.3s ease-in;
+  pointer-events: none;
+}
 
+.updirection button:hover {
+  background-color: var(--focus-hover-color);
+}
+.updirection button:hover svg {
+  fill: white !important;
+}
 
 /*평점 원형 progress*/
 .circle-wrapper {

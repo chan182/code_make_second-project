@@ -16,7 +16,7 @@ export const makeDateForm = (min) => {
  * @param type - 어디에 사용할 평점인지 구분할 수 있는 type
  * @returns {생성한 element 요소}
  */
-export const makeRatingCircle = (vote_average, type = 'popular') => {
+export const makeRatingCircle = (vote_average, type = "popular") => {
   const rating = Math.ceil(vote_average * 10);
   const circleColorDeg = Math.ceil(vote_average * 36);
   const displayType =
