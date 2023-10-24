@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&family=Orbit&family=Playpen+Sans&family=Roboto+Mono&display=swap");
+
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-size: 100px;
+  color: #252c41;
+  text-align: center;
+  background-color: #dddfe6;
+  padding: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+:root {
+  --card-bg-color: #f5f6fa;
+}
+
+/*contents*/
+html{
+  font-size: 62.5%;
+}
+body {
+  padding-bottom: 50px;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: end;
+  border-bottom: 1px solid;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+}
+
+.header div {
+  padding: 1em;
+}
+
+#input_value {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #f4f5f9;
+  width: 200px;
+  height: 40px;
+  font-size: 30px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid lightgray;
+  padding: 10px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  margin: 20px 40px 20px 20px;
+}
+
+.button-81 {
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  color: #252c41;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 1rem 1.6rem;
+  text-align: center;
+  text-decoration: none #252c41 solid;
+  text-decoration-thickness: auto;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-81:hover {
+  background-color: #252c41;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .button-81 {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+  }
+}
+
+
+.main-cards {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-rows: repeat(auto-fit, 700px);
+  row-gap: 30px;
+  column-gap: 10px;
+}
+
+/*@media screen and (max-width: 1600px) {
+    .main-cards {
+        margin: 100px;
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(3, 400px);
+        grid-template-rows: repeat(7, 800px);
+        gap: 50px;
+    }
+    .card {
+        position: relative;
+        height: 700px;
+        margin-top: 100px;
+    }
+}*/
+
+.card {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--card-bg-color);
+}
+
+.card > div:first-child {
+  position: relative;
+}
+
+.card img {
+  max-height: 410px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+
+.hover11:hover {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
+
+@-webkit-keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#card_name {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #252c41;
+  font-size: 26px;
+  padding: 0px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+#card_content {
+  padding: 20px;
+  height: 100px;
+  overflow-y: auto;
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #252c41;
+}
+
+#card-score {
+  padding: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 25px;
+}
+
+.updirection {
+  right: 30px;
+  bottom: 30px;
+  position: fixed;
+
+  cursor: pointer;
+}
+
+
+/*평점 원형 progress*/
+.circle-wrapper {
+  font-size: 1rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.circle-wrapper.popular {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.2rem;
+}
+
+.circle {
+  width: inherit;
+  height: inherit;
+  border-radius: 50px;
+  border: 1px solid #353b48;
+  position: relative;
+  /*background: conic-gradient(
+    var(--progress-color) 300deg,
+    white 50deg
+  ); */
+}
+
+.inner-circle {
+  width: 90%;
+  height: 90%;
+  border-radius: inherit;
+  background-color: #353b48;
+  margin: auto;
+  display: flex;
+  color: white;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.inner-circle span {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+}

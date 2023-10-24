@@ -1,3 +1,5 @@
+import {makeRatingCircle} from './util.js';
+
 let cardInven = document.getElementById("card-inven");
 let searchButton = document.getElementById("search-button");
 let inputValueArea = document.getElementById("input_value");
@@ -30,10 +32,11 @@ fetch(
             let temp_html = `<div class="card">
             <div>
                 <img src="https://image.tmdb.org/t/p/w300${poster_path}" id="card-image"  class="hover11" onclick="alert(' id 값 :${id_area}')" style="cursor:pointer;">
+                ${makeRatingCircle(vote_average)}
             </div>
             <div id="card_name">${title}</div>
             <div id="card_content">"${overview}"</div>
-            <div id="card-score"> Rating : ${vote_average} ❤️❤️❤️❤️</div>
+            
         </div>`;
 
             cardInven.innerHTML += temp_html; //

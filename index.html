@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=1920">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
 
-<body>
-    <h1>내배캠 최고 평점 영화 컬렉션</h1>
-    <section class="header">
+  <body>
+    <section class="wrapper">
+      <h1>내배캠 최고 평점 영화 컬렉션</h1>
+      <section class="header">
         <div class=search_bar>
-            <input type="text" id="input_value" placeholder="영화이름 검색">
-            <button class="button-81" role="button" id="search-button">검색</button>
+          <input type="text" id="input_value" placeholder="영화이름 검색">
+          <button class="button-81" role="button" id="search-button">검색</button>
         </div>
-    </section>
+      </section>
 
-    <section class=" main-cards" id="card-inven">
-    </section>
-    <section class="footer">
+      <section class=" main-cards" id="card-inven">
+      </section>
+      <section class="footer">
 
-    </section>
-    <div class="updirection btn_top" id="btn_top">
+      </section>
+      <div class="updirection btn_top" id="btn_top">
         <img src=" images/updirection.png" id="btn_image" onclick="window.scrollTo(0,0)">
-    </div>
-    <script src="main.js"></script>
-</body>
+      </div>
+      <script type="module" src="./js/util.js"></script>
+      <script type="module" src="./js/main.js"></script>
+    </section>
+
+  </body>
 
 </html>
