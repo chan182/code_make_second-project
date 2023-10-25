@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,7 +22,6 @@
       </section>
 
       <section class="main-cards" id="card-inven"></section>
-      <section class="footer"></section>
 
       <div class="updirection btn_top">
         <button id="btn_top">
@@ -38,11 +37,10 @@
           </svg>
         </button>
       </div>
-      <script type="module" src="./js/util.js"></script>
-      <script type="module" src="./js/main.js"></script>
     </section>
+
     <footer class="footer">
-      <div>
+      <div class="pagination-wrapper">
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +67,7 @@
             ></path>
           </svg>
         </button>
-        <button>1</button>
+        <button class="active-pagination">1</button>
         <button>2</button>
         <button>3</button>
         <button>4</button>
@@ -102,5 +100,7 @@
         </button>
       </div>
     </footer>
+    <script type="module" src="./js/util.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

@@ -18,7 +18,8 @@ const getMovies = async (url = "") => {
 
 // html 생성 함수
 const createMovieCard = (movieData) => {
-  const { results } = movieData;
+  const { results, total_pages, page } = movieData;
+
   if (results.length === 0) {
     alert("검색된 데이터가 없습니다!");
     return;
@@ -41,7 +42,24 @@ const createMovieCard = (movieData) => {
         `;
     cardInven.innerHTML += movieCard;
   });
+  // pagination 버튼 생성 함수
+  makePagination(page, total_pages);
 };
+
+function makePagination(currentPage, totalPages) {
+  // 한 페이지에 보여줄 컨텐츠 개수
+  const pageLimit = 20;
+  // 페이징 넘버 그룹당 보여줄 숫자 개수
+  const pageGroupLimit = 5;
+  // 현재 페이지 그룹
+  const currentPageGroup = Math.ceil(currentPage / pageGroupLimit);
+  // loop 시작 번호
+  const loopStartNum = (currentPageGroup - 1) * pageGroupLimit + 1;
+  // loop 마지막 번호
+  const loopEndNum = currentPageGroup * pageGroupLimit;
+
+  for (let i = loopStartNum; i <= loopEndNum; i++) {}
+}
 
 ///  2. 검색 기능 ( get 요청하여 검색하여 정보를 가지고 옴)
 
