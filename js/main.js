@@ -19,7 +19,6 @@ const getMovies = async (url = "") => {
 // html 생성 함수
 const createMovieCard = (movieData, keyword) => {
   const { results, total_pages, page } = movieData;
-  console.log(movieData);
   if (results.length === 0) {
     alert("검색된 데이터가 없습니다!");
     return;
@@ -125,10 +124,11 @@ function makePagination(currentPage, totalPages, keyword) {
   // console.log(pageCard);
 
   let paginationWrapper = document.querySelector(".pagination-wrapper");
+  paginationWrapper.innerHTML = "";
   paginationWrapper.append(pageCard);
 
-  console.log(pageCard);
-  console.log(currentPage);
+  // console.log(pageCard);
+  // console.log(currentPage);
 
   const paginationBtns = document.querySelectorAll(
     ".pagination-wrapper button",
@@ -137,7 +137,7 @@ function makePagination(currentPage, totalPages, keyword) {
   paginationBtns.forEach(function (i) {
     i.addEventListener("click", function (event) {
       currentPage = event.target.value;
-      console.log(currentPage);
+      // console.log(currentPage);
       search(keyword, currentPage);
       pageCard.innerHTML = "";
     });
@@ -147,10 +147,10 @@ function makePagination(currentPage, totalPages, keyword) {
 
 ///  2. 검색 기능 ( get 요청하여 검색하여 정보를 가지고 옴)
 
-async function search(keyword = "", currentPage) {
+async function search(keyword = "", currentPage = 1) {
   let url = `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=${currentPage}`;
   if (keyword !== "") {
-    url = `https://api.themoviedb.org/3/search/movie?query=${keyword}&include_adult=false&language=ko-KR&page=1`;
+    url = `https://api.themoviedb.org/3/search/movie?query=${keyword}&include_adult=false&language=ko-KR&page=${currentPage}`;
   }
   const movieData = await getMovies(url);
   createMovieCard(movieData, keyword);
