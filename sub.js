@@ -5,6 +5,8 @@ const deleteButton = document.getElementById("delete-button");
 const cardList = document.getElementById("review-list");
 const INFO_KEY = "infos";
 
+const movieId = 1203232;
+
 let inFos = [];
 
 let buttonClick = document.getElementById("button-click");
@@ -25,21 +27,31 @@ function play() {
     name: newName,
     content: newContent,
     password: newPassword,
+    movieId,
     id: Date.now(),
   };
   inFos.push(newInfoObj);
-  render(newInfoObj);
   saveInfos(inFos);
+  render(newInfoObj);
 }
 
 // 삭제
 
 function deleteInfos(event) {
-  let newPAssword = prompt();
-  const div0 = event.target.parentElement;
-  div0.remove();
-  const filterInFos = inFos.filter((info) => info.id !== parseInt(div0.id));
+  let newPassword = prompt();
+
+  const parentDiv = event.target.parentElement;
+
+  if (newPassword !== parentDiv.dataset.password) {
+    alert("비밀번호가 다릅니다.");
+    return;
+  }
+
+  const filterInFos = inFos.filter(
+    (info) => info.id !== parseInt(parentDiv.id),
+  );
   saveInfos(filterInFos);
+  render();
 }
 
 // 수정
@@ -50,24 +62,34 @@ function deleteInfos(event) {
 
 // 2. 가져오기 및 그려주기
 
-function render(newInfoObj) {
-  const div0 = document.createElement("div");
-  div0.id = newInfoObj.id;
-  const divName = document.createElement("div");
-  divName.innerText = `이름 : ${newInfoObj.name}`;
-  const divContent = document.createElement("div");
-  divContent.innerText = `한줄평 : ${newInfoObj.content}`;
-  const button1 = document.createElement("button");
-  button1.innerText = "삭제";
-  const button2 = document.createElement("button");
-  button2.innerText = "수정";
-  button1.addEventListener("click", deleteInfos);
-  // button2.addEventListener("click", modifyInfos);
-  div0.appendChild(divName);
-  div0.appendChild(divContent);
-  div0.appendChild(button1);
-  div0.appendChild(button2);
-  cardList.appendChild(div0);
+function render() {
+  cardList.innerHTML = "";
+  const reviews = localStorage.getItem("infos");
+
+  JSON.parse(reviews)
+    .filter((item) => {
+      return item.movieId === movieId;
+    })
+    .forEach((newInfoObj) => {
+      const parentDiv = document.createElement("div");
+      parentDiv.id = newInfoObj.id;
+      parentDiv.dataset.password = newInfoObj.password;
+      const divName = document.createElement("div");
+      divName.innerText = `이름 : ${newInfoObj.name}`;
+      const divContent = document.createElement("div");
+      divContent.innerText = `한줄평 : ${newInfoObj.content}`;
+      const button1 = document.createElement("button");
+      button1.innerText = "삭제";
+      const button2 = document.createElement("button");
+      button2.innerText = "수정";
+      button1.addEventListener("click", deleteInfos);
+      // button2.addEventListener("click", modifyInfos);
+      parentDiv.appendChild(divName);
+      parentDiv.appendChild(divContent);
+      parentDiv.appendChild(button1);
+      parentDiv.appendChild(button2);
+      cardList.appendChild(parentDiv);
+    });
 }
 
 const savedInfos = localStorage.getItem(INFO_KEY);
