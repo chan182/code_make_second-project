@@ -3,19 +3,32 @@ const inputContent = document.getElementById("input-content");
 const inputPassword = document.getElementById("input-password");
 const deleteButton = document.getElementById("delete-button");
 const cardList = document.getElementById("review-list");
-const INFO_KEY = "infos";
-
+const REVIEW_KEY = "reviews";
 const movieId = 1203232;
+const buttonClick = document.getElementById("button-click");
+const savedInfos = localStorage.getItem(REVIEW_KEY);
+let review = [];
 
-let inFos = [];
-
-let buttonClick = document.getElementById("button-click");
-
+buttonClick.addEventListener("click", checking);
 buttonClick.addEventListener("click", play);
 
+// 유효성 검사
+function checking() {
+  if (inputName.value === "") {
+    alert("작성자명이 비었습니다!");
+    return;
+  } else if (inputPassword.value === "") {
+    alert("비밀번호를 입력해주세요");
+    return;
+  } else if (inputContent.value === "") {
+    alert("내용을 한 글 자 이상 입력해주세요!");
+    return;
+  }
+}
+
 // 저장하기 3
-function saveInfos(newInfos) {
-  localStorage.setItem(INFO_KEY, JSON.stringify(newInfos));
+function saveInfos(newreview) {
+  localStorage.setItem(REVIEW_KEY, JSON.stringify(newreview));
 }
 
 // 저장하기 1
@@ -30,12 +43,13 @@ function play() {
     movieId,
     id: Date.now(),
   };
-  inFos.push(newInfoObj);
-  saveInfos(inFos);
+  console.log(review);
+  review.push(newInfoObj);
+  saveInfos(review);
   render(newInfoObj);
 }
 
-// 삭제
+// 삭제버튼 클릭시 비밀번호 입력 값 받고 맞으면 삭제 처리
 
 function deleteInfos(event) {
   let newPassword = prompt();
@@ -56,15 +70,11 @@ function deleteInfos(event) {
 
 // 수정
 
-// function modifyInfos(event) {
-//   const div = event.target.parentElement;
-// }
-
 // 2. 가져오기 및 그려주기
 
 function render() {
   cardList.innerHTML = "";
-  const reviews = localStorage.getItem("infos");
+  const reviews = localStorage.getItem("reviews");
 
   JSON.parse(reviews)
     .filter((item) => {
@@ -78,24 +88,22 @@ function render() {
       divName.innerText = `이름 : ${newInfoObj.name}`;
       const divContent = document.createElement("div");
       divContent.innerText = `한줄평 : ${newInfoObj.content}`;
-      const button1 = document.createElement("button");
-      button1.innerText = "삭제";
-      const button2 = document.createElement("button");
-      button2.innerText = "수정";
-      button1.addEventListener("click", deleteInfos);
-      // button2.addEventListener("click", modifyInfos);
+      const deleteButton = document.createElement("button");
+      deleteButton.innerText = "삭제";
+      const modifyButton = document.createElement("button");
+      modifyButton.innerText = "수정";
+      deleteButton.addEventListener("click", deleteInfos);
+      // modifyButton.addEventListener("click", modifyInfos);
       parentDiv.appendChild(divName);
       parentDiv.appendChild(divContent);
-      parentDiv.appendChild(button1);
-      parentDiv.appendChild(button2);
+      parentDiv.appendChild(deleteButton);
+      parentDiv.appendChild(modifyButton);
       cardList.appendChild(parentDiv);
     });
 }
 
-const savedInfos = localStorage.getItem(INFO_KEY);
-
 if (savedInfos !== null) {
-  const parsedInfos = JSON.parse(savedInfos);
-  inFos = parsedInfos;
-  parsedInfos.forEach(render);
+  const parsedReviews = JSON.parse(savedInfos);
+  inFos = parsedReviews;
+  parsedReviews.forEach(render);
 }
