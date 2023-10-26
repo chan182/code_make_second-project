@@ -11,3 +11,20 @@ body {
   max-width: 144rem;
   margin: 0 auto;
 }
+
+#review-list {
+  width: 500px;
+  margin: 20px auto 20px auto;
+  padding: 20px;
+}
+
+#review-list div {
+  margin: 20px;
+  border: 2px lightgray solid;
+  padding: 10px;
+}
+
+#review-list button {
+  width: 50px;
+  margin-right: 5px;
+}
