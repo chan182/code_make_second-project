@@ -303,3 +303,6 @@ footer div {
   color: #fff;
   border-radius: 0.5rem;
 }
+.pagination-wrapper svg {
+  pointer-events: none;
+}

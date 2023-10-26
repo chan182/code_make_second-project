@@ -17,9 +17,9 @@ const getMovies = async (url = "") => {
 };
 
 // html 생성 함수
-const createMovieCard = (movieData) => {
+const createMovieCard = (movieData, keyword) => {
   const { results, total_pages, page } = movieData;
-
+  console.log(movieData);
   if (results.length === 0) {
     alert("검색된 데이터가 없습니다!");
     return;
@@ -43,10 +43,11 @@ const createMovieCard = (movieData) => {
     cardInven.innerHTML += movieCard;
   });
   // pagination 버튼 생성 함수
-  makePagination(page, total_pages);
+  makePagination(page, total_pages, keyword);
 };
 
-function makePagination(currentPage, totalPages) {
+function makePagination(currentPage, totalPages, keyword) {
+  totalPages = totalPages > 500 ? 500 : totalPages;
   // 한 페이지에 보여줄 컨텐츠 개수
   const pageLimit = 20;
   // 페이징 넘버 그룹당 보여줄 숫자 개수
@@ -56,10 +57,12 @@ function makePagination(currentPage, totalPages) {
   // loop 시작 번호
   const loopStartNum = (currentPageGroup - 1) * pageGroupLimit + 1;
   // loop 마지막 번호
-  const loopEndNum = currentPageGroup * pageGroupLimit;
+  let loopEndNum = currentPageGroup * pageGroupLimit;
+  loopEndNum = loopEndNum > totalPages ? totalPages : loopEndNum;
 
   const pageCard = document.createElement("div");
-  pageCard.innerHTML += `<button>
+
+  pageCard.innerHTML += `<button value="1">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="1em"
@@ -72,7 +75,7 @@ function makePagination(currentPage, totalPages) {
     ></path>
   </svg>
 </button>
-<button>
+<button value="${currentPage - 1 <= 0 ? 1 : currentPage - 1}">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="1em"
@@ -88,9 +91,12 @@ function makePagination(currentPage, totalPages) {
   for (let i = loopStartNum; i <= loopEndNum; i++) {
     // console.log(i);
     // console.log(`<button>${i}</button>`);
-    pageCard.innerHTML += `<button class="btn-num">${i}</button>`;
+    pageCard.innerHTML += `<button value="${i}" 
+    class = "${currentPage === i ? "active-pagination" : ""} ">${i}</button>`;
   }
-  pageCard.innerHTML += `<button>
+  pageCard.innerHTML += `<button value="${
+    currentPage + 1 > totalPages ? totalPages : currentPage + 1
+  }">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="1em"
@@ -103,7 +109,7 @@ function makePagination(currentPage, totalPages) {
     ></path>
   </svg>
 </button>
-<button>
+<button value="${totalPages}">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="1em"
@@ -116,34 +122,38 @@ function makePagination(currentPage, totalPages) {
     ></path>
   </svg>
 </button>`;
-  console.log(pageCard);
+  // console.log(pageCard);
 
   let paginationWrapper = document.querySelector(".pagination-wrapper");
   paginationWrapper.append(pageCard);
 
-  const btn = document.querySelector("btn-num");
-  const active = ".active-pagination";
-  btn.classList.add(active);
-  handlePageClick(loopStartNum, loopEndNum);
-}
+  console.log(pageCard);
+  console.log(currentPage);
 
-function handlePageClick(loopStartNum, loopEndNum) {
-  for (let i = loopStartNum; i <= loopEndNum; i++) {
-    const btnNum = document.querySelector(`.btn_num${i}`);
-    const active = document.querySelector(".active-pagination");
-    btnNum.classList.add(active);
-  }
+  const paginationBtns = document.querySelectorAll(
+    ".pagination-wrapper button",
+  ); // 배열 -> 반복문 사용 가능
+  // console.log(paginationBtns);
+  paginationBtns.forEach(function (i) {
+    i.addEventListener("click", function (event) {
+      currentPage = event.target.value;
+      console.log(currentPage);
+      search(keyword, currentPage);
+      pageCard.innerHTML = "";
+    });
+    // console.log(i);
+  });
 }
 
 ///  2. 검색 기능 ( get 요청하여 검색하여 정보를 가지고 옴)
 
-async function search(keyword = "") {
-  let url = `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1`;
+async function search(keyword = "", currentPage) {
+  let url = `https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=${currentPage}`;
   if (keyword !== "") {
     url = `https://api.themoviedb.org/3/search/movie?query=${keyword}&include_adult=false&language=ko-KR&page=1`;
   }
   const movieData = await getMovies(url);
-  createMovieCard(movieData);
+  createMovieCard(movieData, keyword);
 }
 
 document.getElementById("search_form").addEventListener("submit", function (e) {
