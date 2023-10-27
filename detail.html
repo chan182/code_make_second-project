@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>영화제목</title>
+    <title></title>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/detail.css" />
+    <link rel="stylesheet" href="./css/circle.css" />
   </head>
   <body>
     <!-- nav bar -->
@@ -14,7 +15,7 @@
     <section class="wrapper">
       <!-- 민용 start -->
       <header class="detail-header">
-        <h1>홈 헤더 이용</h1>
+        <h1></h1>
       </header>
       <main class="detail-main">
         <!-- 영화 이미지, 제목, 줄거리, 런타임, 상영시간 -->
@@ -38,12 +39,12 @@
 
         <div class="tab-content">
           <section class="review-add">
-            <div class="con">
-              <div id="reviewarea">
-                <div class="namebar">
+            <div class="review-wrapper">
+              <div id="review_area">
+                <div class="name-bar">
                   <h2 class="neon">작성자</h2>
                   <input
-                    class="nameinput"
+                    class="name-input"
                     id="input-name"
                     type="text"
                     placeholder="이름을 입력해주세요!"
@@ -72,6 +73,9 @@
               </div>
             </div>
           </section>
+          <!--review List start-->
+          <section class="review-list"></section>
+          <!--review List end-->
         </div>
         <!-- 탭 -->
 
@@ -79,6 +83,7 @@
       </div>
     </section>
 
-    <script src="./js/detail.js"></script>
+    <script type="module" src="./js/util.js"></script>
+    <script type="module" src="./js/detail.js"></script>
   </body>
 </html>
