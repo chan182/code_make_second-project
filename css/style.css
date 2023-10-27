@@ -74,20 +74,9 @@ body {
   color: #252c41;
   cursor: pointer;
   display: inline-block;
-  font-family:
-    "Basier circle",
-    -apple-system,
-    system-ui,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    "Noto Sans",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
@@ -262,4 +251,41 @@ body {
   display: flex;
   align-items: center;
   font-size: 1.6rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+footer div {
+  margin: auto 0;
+}
+.pagination-wrapper > div {
+  display: flex;
+}
+.pagination-wrapper > div > button {
+  padding: 2rem;
+  border: 0;
+  background-color: transparent;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.pagination-wrapper > div > button:hover {
+  background-color: palevioletred;
+  color: #fff;
+  border-radius: 0.5rem;
+  transition: ease-in-out 0.3s;
+}
+
+.active-pagination {
+  background-color: palevioletred !important;
+  color: #fff;
+  border-radius: 0.5rem;
+}
+.pagination-wrapper svg {
+  pointer-events: none;
 }

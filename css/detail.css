@@ -18,6 +18,10 @@ body {
   max-width: 144rem;
   margin: 0 auto;
 }
+button {
+  border: 0;
+  background-color: transparent;
+}
 
 .detail-header{
   text-align: center;
