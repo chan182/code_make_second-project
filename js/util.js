@@ -19,10 +19,8 @@ export const makeDateForm = (min) => {
 export const makeRatingCircle = (vote_average, type = "popular") => {
   const rating = Math.ceil(vote_average * 10);
   const circleColorDeg = Math.ceil(vote_average * 36);
-  const displayType =
-    type === "popular" ? "popular" : type === "top" ? "other" : "modal";
 
-  return ` <div class="circle-wrapper ${displayType}">
+  return ` <div class="circle-wrapper ${type}">
     <div class="circle" style="background: conic-gradient(#4cd137 ${circleColorDeg}deg, white 0deg);">
       <div class="inner-circle">
         <span>${rating}%</span>
