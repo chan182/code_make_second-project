@@ -1,41 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Practice</title>
-    <style>
-      body {
-        margin: 0;
-        display: grid;
-        place-content: center center;
-        background-color: #000;
-        color: #fff;
-        height: 100vh;
-        font-size: 40px;
-      }
-      div {
-        color: pink;
-      }
-    </style>
-  </head>
-  <body>
-    <div>Hi</div>
-    <input type="text" />
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    <script>
-      // const div = document.querySelector("div");
-      // div.addEventListener("click", () => {
-      //   //이벤트 트리거(addEventListener의 첫 번째 자리)가 실행되면
-      //   // 여기있는 코드 실행해주세염
-      // });
+#navbar {
+  background-color: #333;
+  position: fixed;
+  top: -50px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+}
 
-      const input = document.querySelector("input");
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
-      input.addEventListener("change", function () {
-        if (input) console.log(this.value);
-      });
-      console.log(input);
-    </script>
-  </body>
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+
+
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 300px;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Scroll Down</h2>
+  <p>Scroll down to see the sticky effect.</p>
+</div>
+
+
+<div id="navbar">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a> <p id="result">0</p></a>
+</div>
+
+
+<div id="navbar1">
+  <a class="active" href="javascript:void(0)">상세보기</a>
+  <a href="javascript:void(0)">리뷰</a>
+  <a href="javascript:void(0)">기타</a>
+</div>
+
+<div style="padding:15px 15px 2500px;font-size:30px">
+  <p>홍길동 : 너무 재밌는 영화였습니다.</p>
+    <p>홍길순 : 너무 재밌는 영화였습니다.</p>
+      <p>홍 : 너무 재밌는 영화였습니다.</p>
+        <p>홍길 : 너무 재밌는 영화였습니다.</p>
+          <p>임꺽정 : 너무 재밌는 영화였습니다.</p>
+</div>
+
+<script>
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    document.getElementById("navbar").style.top = "0px";
+  } else {
+    document.getElementById("navbar").style.top = "-100px";
+  }
+  
+}
+
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar1");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+
+
+
+
+
+
+
+
+
+const result=document.querySelector('#result');
+window.addEventListener('scroll',function(){
+	result.innerHTML=window.pageYOffset;
+})
+
+
+
+</script>
+
+</body>
 </html>
