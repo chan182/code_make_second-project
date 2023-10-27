@@ -1,4 +1,5 @@
 import { makeRatingCircle } from "./util.js";
+import { swear_words_arr } from "./filter.js";
 
 //  영화 세부사항
 
@@ -150,6 +151,7 @@ let review = [...JSON.parse(savedInfos)];
 buttonClick.addEventListener("click", play);
 
 // 유효성 검사
+
 function checking() {
   if (inputName.value === "") {
     alert("작성자명이 비었습니다!");
@@ -162,6 +164,13 @@ function checking() {
   if (inputContent.value === "") {
     alert("내용을 한 글 자 이상 입력해주세요!");
     return;
+  }
+
+  for (let i = 0; i < swear_words_arr.length; i++) {
+    if (inputContent.value.includes(swear_words_arr[i])) {
+      alert("비속어가 포함되어있습니다.");
+      return;
+    }
   }
 }
 
