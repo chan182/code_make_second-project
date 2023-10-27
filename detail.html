@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>영화제목</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/detail.css" />
+  </head>
+  <body>
+    <!-- nav bar -->
+    <div id="navbar"></div>
+    <!-- nav bar -->
+
+    <section class="wrapper">
+      <!-- 민용 start -->
+      <header class="detail-header">
+        <h1>홈 헤더 이용</h1>
+      </header>
+      <main class="detail-main">
+        <!-- 영화 이미지, 제목, 줄거리, 런타임, 상영시간 -->
+      </main>
+
+      <!-- 탭 -->
+      <div class="container">
+        <!--
+                <div style="width:95%; height:50px; border:1px solid red; border-radius: 5px;
+                margin: 50px auto;"></div> -->
+        <div id="navbar1">
+          <ul class="list">
+            <li class="tab-button selected" data-id="0">상세보기</li>
+            <li class="tab-button" data-id="1">리뷰</li>
+          </ul>
+        </div>
+
+        <div class="tab-content show">
+          <div class="content"></div>
+        </div>
+
+        <div class="tab-content">
+          <section class="review-add">
+            <div class="con">
+              <div id="reviewarea">
+                <div class="namebar">
+                  <h2 class="neon">작성자</h2>
+                  <input
+                    class="nameinput"
+                    id="input-name"
+                    type="text"
+                    placeholder="이름을 입력해주세요!"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="passwordbar">
+                  <h2 class="neon">패스워드</h2>
+                  <input
+                    class="psdinput"
+                    id="input-password"
+                    type="password"
+                    placeholder="비밀번호를 입력해주세요!"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="reviewbox">
+                  <textarea class="reviweinput" id="input-content"></textarea>
+                </div>
+
+                <button type="submit" class="btn" id="button-click">
+                  작 성!
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- 탭 -->
+
+        <!-- 민용 end -->
+      </div>
+    </section>
+
+    <script src="./js/detail.js"></script>
+  </body>
+</html>
