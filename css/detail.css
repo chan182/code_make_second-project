@@ -11,6 +11,10 @@ body {
   max-width: 144rem;
   margin: 0 auto;
 }
+button {
+  border: 0;
+  background-color: transparent;
+}
 
 /* 리뷰 작성 지훈 코딩 */
 
