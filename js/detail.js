@@ -143,7 +143,7 @@ const deleteButton = document.getElementById("delete-button");
 const cardList = document.querySelector(".review-list");
 const REVIEW_KEY = "reviews";
 const buttonClick = document.getElementById("button-click");
-const savedInfos = localStorage.getItem(REVIEW_KEY);
+const savedInfos = localStorage.getItem(REVIEW_KEY) ?? "[]";
 let review = [...JSON.parse(savedInfos)];
 
 buttonClick.addEventListener("click", play);
@@ -204,7 +204,7 @@ function deleteInfos(event) {
     return;
   }
 
-  const filterInFos = inFos.filter(
+  const filterInFos = review.filter(
     (info) => info.id !== parseInt(parentDiv.id),
   );
   saveInfos(filterInFos);
