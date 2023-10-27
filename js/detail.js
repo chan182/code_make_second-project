@@ -143,7 +143,8 @@ const deleteButton = document.getElementById("delete-button");
 const cardList = document.querySelector(".review-list");
 const REVIEW_KEY = "reviews";
 const buttonClick = document.getElementById("button-click");
-const savedInfos = localStorage.getItem(REVIEW_KEY);
+// const savedInfos = localStorage.getItem(REVIEW_KEY);
+const savedInfos = localStorage.getItem(REVIEW_KEY) ?? "[]";
 let review = [...JSON.parse(savedInfos)];
 
 buttonClick.addEventListener("click", play);
@@ -195,7 +196,7 @@ function play() {
 
 function deleteInfos(event) {
   let newPassword = prompt();
-
+  console.log('dddd')
   const parentDiv = event.target.parentElement;
   console.log(parentDiv);
 
@@ -203,8 +204,9 @@ function deleteInfos(event) {
     alert("비밀번호가 다릅니다.");
     return;
   }
+ 
 
-  const filterInFos = inFos.filter(
+  const filterInFos = review.filter(
     (info) => info.id !== parseInt(parentDiv.id),
   );
   saveInfos(filterInFos);

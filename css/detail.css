@@ -1,14 +1,45 @@
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
-
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Ubuntu:wght@400;500;700&display=swap");
+@font-face {
+  font-family: "GangwonEduPowerExtraBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 html {
   font-size: 62.5%;
 }
 
-body {
+.font {
   margin: 3%;
   font-family: "NanumSquare", sans-serif;
   font-size: 1.6rem;
 }
+
+/* a태그 스타일 없애기 */
+.location{
+  text-decoration: none;
+  color:inherit;
+}
+
+/* a태그 스타일 없애기 */
+
+
+/* 내배캠 홈버튼 */
+.main-header__h1 {
+  font-size: 6rem;
+  font-family: "GangwonEduPowerExtraBoldA";
+  text-align: center;
+  padding: 5rem 0 3rem;
+}
+
+
+/* 내배캠 홈버튼 */
+
+
+
+
 
 .wrapper {
   /* box-shadow: inset 0 0 20px red; */
@@ -124,7 +155,7 @@ ul.list {
   width: 1400px;
   list-style-type: none;
   margin: 0;
-  padding: 10rem 0 0;
+  padding: 3rem 0 0;
   border-bottom: 1px solid gray;
 }
 ul.list::after {
