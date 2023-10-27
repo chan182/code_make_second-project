@@ -1,4 +1,5 @@
 import { makeRatingCircle } from "./util.js";
+import { swear_words_arr } from "./filter.js";
 
 // 1. API 연결
 const options = {
@@ -163,6 +164,14 @@ document.getElementById("search_form").addEventListener("submit", function (e) {
     alert("검색어를 입력해주세요.");
     return;
   }
+
+  for (let i = 0; i < swear_words_arr.length; i++) {
+    if (keyword.includes(swear_words_arr[i])) {
+      alert("비속어는 입력할 수 없습니다.");
+      return;
+    }
+  }
+
   search(keyword);
 });
 
