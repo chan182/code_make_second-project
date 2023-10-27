@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Ubuntu:wght@400;500;700&display=swap");
+@font-face {
+  font-family: "Cafe24Ssurround";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GangwonEduPowerExtraBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 h1,
 h2,
@@ -74,9 +90,20 @@ body {
   color: #252c41;
   cursor: pointer;
   display: inline-block;
-  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    "Basier circle",
+    -apple-system,
+    system-ui,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1;
@@ -117,6 +144,8 @@ body {
 
 .card > div:first-child {
   position: relative;
+  font-family: var(--sub-font);
+  font-size: 1.6rem;
 }
 
 .card img {
@@ -204,53 +233,6 @@ body {
 }
 .updirection button:hover svg {
   fill: white !important;
-}
-
-/*평점 원형 progress*/
-.circle-wrapper {
-  font-size: 1rem;
-  width: 5rem;
-  height: 5rem;
-}
-
-.circle-wrapper.popular {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.2rem;
-}
-
-.circle {
-  width: inherit;
-  height: inherit;
-  border-radius: 50px;
-  border: 1px solid #353b48;
-  position: relative;
-  /*background: conic-gradient(
-    var(--progress-color) 300deg,
-    white 50deg
-  ); */
-}
-
-.inner-circle {
-  width: 90%;
-  height: 90%;
-  border-radius: inherit;
-  background-color: #353b48;
-  margin: auto;
-  display: flex;
-  color: white;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.inner-circle span {
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
 }
 
 footer {

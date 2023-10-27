@@ -28,9 +28,9 @@ const createMovieCard = (movieData, keyword) => {
   results.forEach((a) => {
     const { id, title, overview, poster_path, vote_average } = a;
     const movieCard = `
-            <div class="card">
+            <div class="card" onclick="location.href='/detail.html?movie_id=${id}'">
               <div>
-                  <img src="https://image.tmdb.org/t/p/w300${poster_path}" id="card-image"  class="hover11" onclick="alert(' id 값 :${id}')" style="cursor:pointer;">
+                  <img src="https://image.tmdb.org/t/p/w300${poster_path}" id="card-image"  class="hover11" style="cursor:pointer;">
                   ${makeRatingCircle(vote_average)}
               </div>
             <div id="card_name">${title}</div>
