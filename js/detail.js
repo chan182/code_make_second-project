@@ -148,30 +148,49 @@ const buttonClick = document.getElementById("button-click");
 const savedInfos = localStorage.getItem(REVIEW_KEY) ?? "[]";
 let review = [...JSON.parse(savedInfos)];
 
+
 buttonClick.addEventListener("click", play);
 
 // 유효성 검사
+let arr=[];
 
 function checking() {
   if (inputName.value === "") {
     alert("작성자명이 비었습니다!");
-    return;
+   return false;
+  } else{
+   arr.push(inputName.value);
+    
+     
   }
   if (inputPassword.value === "") {
     alert("비밀번호를 입력해주세요");
-    return;
-  }
+    return false; 
+  } else{ 
+    
+     arr.push(inputPassword.value);
+  } 
   if (inputContent.value === "") {
     alert("내용을 한 글 자 이상 입력해주세요!");
-    return;
+    return false;
+  } else{
+
+    if(true){
+      for (let i = 0; i < swear_words_arr.length; i++) {
+        if (inputContent.value.includes(swear_words_arr[i])) {
+          alert("비속어가 포함되어있습니다.");
+          arr.splice(0,2);
+            return false;
+        }
+      } 
+      return arr.push(inputContent.value);
+    }
+    
+   
   }
 
-  for (let i = 0; i < swear_words_arr.length; i++) {
-    if (inputContent.value.includes(swear_words_arr[i])) {
-      alert("비속어가 포함되어있습니다.");
-      return;
-    }
-  }
+
+ 
 }
 
 // 저장하기 3
@@ -182,44 +201,70 @@ function saveInfos(newreview) {
 // 저장하기 1
 function play() {
   checking();
-  const newName = inputName;
-  const newContent = inputContent;
-  const newPassword = inputPassword;
+  if(arr[2]===undefined){
+    inputContent.focus();
+  }
+  else{
+ console.log('111111',arr)
+ 
+  const newName = arr[0];
+  const newPassword = arr[1];
+  const newContent = arr[2];
+  console.log(newName,newPassword,newContent)
   const newInfoObj = {
-    name: newName.value,
-    content: newContent.value,
-    password: newPassword.value,
+    name: newName,
+    content: newContent,
+    password: newPassword,
     movieId,
     id: Date.now(),
   };
-  newName.value = "";
-  newContent.value = "";
-  newPassword.value = "";
+  // newName.value = "";
+  // newContent.value = "";
+  // newPassword.value = "";
 
   review.push(newInfoObj);
   saveInfos(review);
   render(newInfoObj);
+  location.reload();
+}
 }
 
 // 삭제버튼 클릭시 비밀번호 입력 값 받고 맞으면 삭제 처리
 
 function deleteInfos(event) {
-  let newPassword = prompt();
-  console.log('dddd')
-  const parentDiv = event.target.parentElement;
-  console.log(parentDiv);
+  // let newPassword = prompt();
+  // console.log('dddd')
+  // const parentDiv = event.target.parentElement;
+  // console.log(parentDiv);
 
-  if (newPassword !== parentDiv.dataset.password) {
-    alert("비밀번호가 다릅니다.");
-    return;
-  }
+  // if (newPassword !== parentDiv.dataset.password) {
+  //   alert("비밀번호가 다릅니다.");
+  //   return;
+  // }
  
 
-  const filterInFos = review.filter(
-    (info) => info.id !== parseInt(parentDiv.id),
-  );
-  saveInfos(filterInFos);
-  render();
+  // const filterInFos = review.filter(
+  //   (info) => info.id !== parseInt(parentDiv.id),
+  // );
+  // filterInFos();
+  // render();
+
+  let newPassword = prompt();
+
+const parentDiv = event.target.parentElement;
+
+if (newPassword !== parentDiv.dataset.password) {
+alert("비밀번호가 다릅니다.");
+return;
+}
+
+const reviews = localStorage.getItem("reviews");
+
+const filterReviews = JSON.parse(reviews).filter(
+(info) => info.id !== parseInt(parentDiv.id),
+);
+saveInfos(filterReviews);
+render();
 }
 
 // 수정
