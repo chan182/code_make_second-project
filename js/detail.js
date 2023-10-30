@@ -151,6 +151,14 @@ let review = [...JSON.parse(savedInfos)];
 
 buttonClick.addEventListener("click", play);
 
+// 저장하기 3
+function saveInfos(newreview) {
+  localStorage.setItem(REVIEW_KEY, JSON.stringify(newreview));
+}
+
+// 저장하기 1
+function play() {
+  // 유효성 검사
 // 유효성 검사
 let arr=[];
 
@@ -191,16 +199,6 @@ function checking() {
 
 
  
-}
-
-// 저장하기 3
-function saveInfos(newreview) {
-  localStorage.setItem(REVIEW_KEY, JSON.stringify(newreview));
-}
-
-// 저장하기 1
-function play() {
-  checking();
   if(arr[2]===undefined){
     inputContent.focus();
   }
@@ -251,20 +249,21 @@ function deleteInfos(event) {
 
   let newPassword = prompt();
 
-const parentDiv = event.target.parentElement;
+  const parentDiv = event.target.parentElement;
+  console.log(parentDiv);
 
 if (newPassword !== parentDiv.dataset.password) {
 alert("비밀번호가 다릅니다.");
 return;
 }
 
-const reviews = localStorage.getItem("reviews");
+  const reviews = localStorage.getItem("reviews");
 
-const filterReviews = JSON.parse(reviews).filter(
-(info) => info.id !== parseInt(parentDiv.id),
-);
-saveInfos(filterReviews);
-render();
+  const filterReviews = JSON.parse(reviews).filter(
+    (info) => info.id !== parseInt(parentDiv.id),
+  );
+  saveInfos(filterReviews);
+  render();
 }
 
 // 수정
