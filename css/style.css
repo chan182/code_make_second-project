@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&family=Orbit&family=Playpen+Sans&family=Roboto+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Ubuntu:wght@400;500;700&display=swap");
 @font-face {
   font-family: "Cafe24Ssurround";
@@ -145,6 +144,8 @@ body {
 
 .card > div:first-child {
   position: relative;
+  font-family: var(--sub-font);
+  font-size: 1.6rem;
 }
 
 .card img {
@@ -234,49 +235,39 @@ body {
   fill: white !important;
 }
 
-/*평점 원형 progress*/
-.circle-wrapper {
-  font-size: 1rem;
-  width: 5rem;
-  height: 5rem;
-}
-
-.circle-wrapper.popular {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.2rem;
-}
-
-.circle {
-  width: inherit;
-  height: inherit;
-  border-radius: 50px;
-  border: 1px solid #353b48;
-  position: relative;
-  /*background: conic-gradient(
-    var(--progress-color) 300deg,
-    white 50deg
-  ); */
-}
-
-.inner-circle {
-  width: 90%;
-  height: 90%;
-  border-radius: inherit;
-  background-color: #353b48;
-  margin: auto;
+footer {
   display: flex;
-  color: white;
   justify-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+  padding: 2rem;
+}
+footer div {
+  margin: auto 0;
+}
+.pagination-wrapper > div {
+  display: flex;
+}
+.pagination-wrapper > div > button {
+  padding: 2rem;
+  border: 0;
+  background-color: transparent;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.pagination-wrapper > div > button:hover {
+  background-color: palevioletred;
+  color: #fff;
+  border-radius: 0.5rem;
+  transition: ease-in-out 0.3s;
 }
 
-.inner-circle span {
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
+.active-pagination {
+  background-color: palevioletred !important;
+  color: #fff;
+  border-radius: 0.5rem;
+}
+.pagination-wrapper svg {
+  pointer-events: none;
 }
